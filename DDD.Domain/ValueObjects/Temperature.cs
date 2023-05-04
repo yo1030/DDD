@@ -1,9 +1,4 @@
-﻿using DDDWinForm.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DDD.Domain.Helpers;
 
 namespace DDD.Domain.ValueObjects
 {
@@ -19,14 +14,14 @@ namespace DDD.Domain.ValueObjects
         public string DisplayValue {
             get
             {
-                return CommonFunc.RoundString(Value, DecimalPoint);
+                return FloatHelper.RoundString(Value, DecimalPoint);
             }
         }
         public string DisplayValueWithUnit
         {
             get
             {
-                return CommonFunc.RoundString(Value, DecimalPoint)
+                return FloatHelper.RoundString(Value, DecimalPoint)
                         + UnitName;
             }
         }
@@ -34,7 +29,7 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                return CommonFunc.RoundString(Value, DecimalPoint)
+                return FloatHelper.RoundString(Value, DecimalPoint)
                         + " "
                         + UnitName;
             }
