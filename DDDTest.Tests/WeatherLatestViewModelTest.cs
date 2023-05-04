@@ -24,7 +24,7 @@ namespace DDDTest.Tests
 
             Assert.AreEqual("1", viewModel.AreaIdText);
             Assert.AreEqual("2018/01/01 12:34:56", viewModel.DataDateText);
-            Assert.AreEqual("2", viewModel.ConditionsText);
+            Assert.AreEqual("曇り", viewModel.ConditionsText);
             Assert.AreEqual("12.30 ℃", viewModel.TemperatureText);
         }
     }
