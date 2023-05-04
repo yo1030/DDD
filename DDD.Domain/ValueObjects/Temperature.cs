@@ -19,7 +19,24 @@ namespace DDD.Domain.ValueObjects
         public string DisplayValue {
             get
             {
-                return CommonFunc.RoundString(Value, DecimalPoint) + UnitName;
+                return CommonFunc.RoundString(Value, DecimalPoint);
+            }
+        }
+        public string DisplayValueWithUnit
+        {
+            get
+            {
+                return CommonFunc.RoundString(Value, DecimalPoint)
+                        + UnitName;
+            }
+        }
+        public string DisplayValueWithUnitSpace
+        {
+            get
+            {
+                return CommonFunc.RoundString(Value, DecimalPoint)
+                        + " "
+                        + UnitName;
             }
         }
 

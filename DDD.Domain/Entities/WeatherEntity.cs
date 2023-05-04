@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DDD.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,12 +19,24 @@ namespace DDD.Domain.Entities
             AreaId = areaId;
             DataDate= dateTime;
             Conditions= condition;
-            Temperature= temperature;
+            Temperature= new Temperature(temperature);
         }
 
         public int AreaId { get; }
         public DateTime DataDate { get; }
         public int Conditions { get; }
-        public float Temperature { get; }
+        public Temperature Temperature { get; }
+
+        public bool IsOK()
+        {
+            if (DataDate < DateTime.Now.AddMonths(-1))
+            {
+                if (Temperature.Value < 10)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
