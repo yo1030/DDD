@@ -8,9 +8,6 @@ namespace DDDWinForm.Common
 {
     public static class CommonConst
     {
-        public const string TemperatureUnitName = "℃";
-        public const int TemperatureDecimalPoint = 2;
-
         // MySQLへの接続情報
         private readonly static string server = "localhost";
         private readonly static string database = "ddd";
