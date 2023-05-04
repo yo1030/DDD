@@ -22,5 +22,25 @@ namespace DDD.Domain.ValueObjects
                 return CommonFunc.RoundString(Value, DecimalPoint) + UnitName;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            Temperature vo = obj as Temperature;
+            if (vo == null)
+            {
+                return false;
+            }
+            return vo.Value == Value;
+        }
+
+        public static bool operator == (Temperature x, Temperature y)
+        {
+            return Equals(x, y);
+        }
+
+        public static bool operator !=(Temperature x, Temperature y)
+        {
+            return !Equals(x, y);
+        }
     }
 }
