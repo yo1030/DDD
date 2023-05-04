@@ -8,6 +8,22 @@ namespace DDD.Domain.ValueObjects
 {
     public sealed class Conditions : ValueObject<Conditions>
     {
+        /// <summary>
+        /// 不明
+        /// </summary>
+        public static readonly Conditions None = new Conditions(0);
+        /// <summary>
+        /// 晴れ
+        /// </summary>
+        public static readonly Conditions Sunny = new Conditions(1);
+        /// <summary>
+        /// 曇り
+        /// </summary>
+        public static readonly Conditions Cloudy = new Conditions(2);
+        /// <summary>
+        /// 雨
+        /// </summary>
+        public static readonly Conditions Rain = new Conditions(3);
         public Conditions(int value)
         {
             Value = value;
@@ -17,15 +33,15 @@ namespace DDD.Domain.ValueObjects
         {
             get
             {
-                if (Value == 1)
+                if (this == Sunny)
                 {
                     return "晴れ";
                 }
-                if (Value == 2)
+                if (this == Cloudy)
                 {
                     return "曇り";
                 }
-                if (Value == 3)
+                if (this == Rain)
                 {
                     return "雨";
                 }

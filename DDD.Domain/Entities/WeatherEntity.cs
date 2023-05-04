@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,18 @@ namespace DDD.Domain.Entities
         public DateTime DataDate { get; }
         public Conditions Conditions { get; }
         public Temperature Temperature { get; }
+
+        public bool IsHeatWeave()
+        {
+            if(Conditions == Conditions.Sunny)
+            {
+                if (Temperature.Value > 30)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public bool IsOK()
         {
