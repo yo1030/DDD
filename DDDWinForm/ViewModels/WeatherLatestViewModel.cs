@@ -2,7 +2,6 @@
 using DDD.Domain.Repositories;
 using DDD.Domain.ValueObjects;
 using DDD.Infrastructure.MySQL;
-using DDDWinForm.Common;
 using System;
 using System.Collections.Generic;
 using System.Data;

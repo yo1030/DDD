@@ -1,6 +1,4 @@
-﻿using DDDWinForm.Common;
-using DDDWinForm.Data;
-using DDDWinForm.ViewModels;
+﻿using DDDWinForm.ViewModels;
 using System;
 using System.Data;
 using System.Data.SqlClient;
