@@ -12,20 +12,19 @@ namespace DDDWinForm
         public WeatherLatestView()
         {
             InitializeComponent();
+            this.AreaIdTextBox.DataBindings.Add(
+                "Text", _viewModel, nameof(_viewModel.AreaIdText));
+            this.DataDateLabel.DataBindings.Add(
+                "Text", _viewModel, nameof(_viewModel.DataDateText));
+            this.ConditionLabel.DataBindings.Add(
+                "Text", _viewModel, nameof(_viewModel.ConditionsText));
+            this.TemperatureLabel.DataBindings.Add(
+                "Text", _viewModel, nameof(_viewModel.TemperatureText));
         }
 
         private void LatestBtn_Click(object sender, EventArgs e)
         {
-            //DataTable dt = WeatherMySQL.GetLatest(Convert.ToInt32(AreaIdTextBox.Text));
-            //if (dt.Rows.Count > 0)
-            //{
-            //    DataDateLabel.Text = dt.Rows[0]["DataDate"].ToString();
-            //    ConditionLabel.Text = dt.Rows[0]["Conditions"].ToString();
-                //TemperatureLabel.Text = CommonFunc.RoundString(
-                //    Convert.ToSingle(dt.Rows[0]["Temperature"]),
-                //    CommonConst.TemperatureDecimalPoint)
-                //    + CommonConst.TemperatureUnitName;
-            //}
+            _viewModel.Search();
         }
     }
 }

@@ -2,11 +2,6 @@
 using DDD.Domain.Repositories;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDD.Infrastructure.MySQL
 {
@@ -33,7 +28,7 @@ LIMIT 1;";
                     while (reader.Read())
                     {
                         return new WeatherEntity(
-                            Convert.ToInt32(reader["AreaId"]),
+                            areaId,
                             Convert.ToDateTime(reader["DataDate"]),
                             Convert.ToInt32(reader["Conditions"]),
                             Convert.ToSingle(reader["Temperature"])
