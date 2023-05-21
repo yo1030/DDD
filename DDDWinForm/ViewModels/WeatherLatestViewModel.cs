@@ -15,13 +15,24 @@ namespace DDDWinForm.ViewModels
     public class WeatherLatestViewModel : ViewModelBase
     {
         private IWeatherRepository _weather;
-        public WeatherLatestViewModel() : this(new WeatherMySQL())
+        private IAreasRepository _areas;
+        public WeatherLatestViewModel() : this(
+            new WeatherMySQL(), null)
         {
 
         }
-        public WeatherLatestViewModel(IWeatherRepository weather)
+        public WeatherLatestViewModel(
+            IWeatherRepository weather,
+            IAreasRepository areas)
         {
-            _weather= weather;
+            _weather = weather;
+            _areas = areas;
+
+            foreach(var area in _areas.GetData())
+            {
+                Console.WriteLine(area);
+                Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
+            }
         }
 
         private string _areaIdText = string.Empty;
@@ -63,6 +74,9 @@ namespace DDDWinForm.ViewModels
                 SetProperty(ref _temperatureText, value);
             }
         }
+
+        public BindingList<AreaEntity> Areas { get; set; }
+        = new BindingList<AreaEntity>();
 
         public void Search()
         {

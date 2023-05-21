@@ -26,5 +26,10 @@ namespace DDDWinForm
         {
             _viewModel.Search();
         }
+
+        private void WeatherLatestView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

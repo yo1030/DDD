@@ -135,6 +135,7 @@
             this.Controls.Add(this.label1);
             this.Name = "WeatherLatestView";
             this.Text = "WeatherLatestView";
+            this.Load += new System.EventHandler(this.WeatherLatestView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
