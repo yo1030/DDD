@@ -17,7 +17,7 @@ namespace DDDWinForm.ViewModels
         private IWeatherRepository _weather;
         private IAreasRepository _areas;
         public WeatherLatestViewModel() : this(
-            new WeatherMySQL(), null)
+            new WeatherMySQL(), new AreasMySQL())
         {
 
         }
@@ -35,13 +35,13 @@ namespace DDDWinForm.ViewModels
             }
         }
 
-        private string _areaIdText = string.Empty;
-        public string AreaIdText
+        private object _selectedAreaId;
+        public object SelectedAreaId
         {
-            get { return _areaIdText; }
+            get { return _selectedAreaId; }
             set
             {
-                SetProperty(ref _areaIdText, value);
+                SetProperty(ref _selectedAreaId, value);
             }
         }
 
@@ -80,7 +80,7 @@ namespace DDDWinForm.ViewModels
 
         public void Search()
         {
-            WeatherEntity entity = _weather.GetLatest(Convert.ToInt32(AreaIdText));
+            WeatherEntity entity = _weather.GetLatest(Convert.ToInt32(_selectedAreaId));
             if (entity != null)
             {
                 DataDateText = entity.DataDate.ToString();

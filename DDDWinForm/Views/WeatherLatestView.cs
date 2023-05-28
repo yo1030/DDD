@@ -1,4 +1,5 @@
-﻿using DDDWinForm.ViewModels;
+﻿using DDD.Domain.Entities;
+using DDDWinForm.ViewModels;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,8 +13,15 @@ namespace DDDWinForm
         public WeatherLatestView()
         {
             InitializeComponent();
-            this.AreaIdTextBox.DataBindings.Add(
-                "Text", _viewModel, nameof(_viewModel.AreaIdText));
+
+            this.AreasComboBox.DropDownStyle= ComboBoxStyle.DropDownList;
+            this.AreasComboBox.DataBindings.Add(
+                "SelectedValue", _viewModel, nameof(_viewModel.SelectedAreaId));
+            this.AreasComboBox.DataBindings.Add(
+                "DataSource", _viewModel, nameof(_viewModel.Areas));
+            this.AreasComboBox.ValueMember = nameof(AreaEntity.AreaId);
+            this.AreasComboBox.DisplayMember = nameof(AreaEntity.AreaName);
+
             this.DataDateLabel.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.DataDateText));
             this.ConditionLabel.DataBindings.Add(
@@ -25,11 +33,6 @@ namespace DDDWinForm
         private void LatestBtn_Click(object sender, EventArgs e)
         {
             _viewModel.Search();
-        }
-
-        private void WeatherLatestView_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

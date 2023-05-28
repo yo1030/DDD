@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MySQL\AreasMySQL.cs" />
     <Compile Include="MySQL\MySQLHealper.cs" />
     <Compile Include="MySQL\WeatherMySQL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

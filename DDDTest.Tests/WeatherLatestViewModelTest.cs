@@ -39,23 +39,27 @@ namespace DDDTest.Tests
             WeatherLatestViewModel viewModel = new WeatherLatestViewModel(
                     weatherMock.Object,
                     areasMock.Object);
-            Assert.AreEqual("", viewModel.AreaIdText);
+            Assert.IsNull(viewModel.SelectedAreaId);
             Assert.AreEqual("", viewModel.DataDateText);
             Assert.AreEqual("", viewModel.ConditionsText);
             Assert.AreEqual("", viewModel.TemperatureText);
             Assert.AreEqual(2, viewModel.Areas.Count);
+            Assert.AreEqual(1, viewModel.Areas[0].AreaId);
+            Assert.AreEqual("東京", viewModel.Areas[0].AreaName);
+            Assert.AreEqual(2, viewModel.Areas[0].AreaId);
+            Assert.AreEqual("神戸", viewModel.Areas[0].AreaName);
 
-            viewModel.AreaIdText = "1";
+            viewModel.SelectedAreaId = 1;
             viewModel.Search();
 
-            Assert.AreEqual("1", viewModel.AreaIdText);
+            Assert.AreEqual(1, viewModel.SelectedAreaId);
             Assert.AreEqual("2018/01/01 12:34:56", viewModel.DataDateText);
             Assert.AreEqual("曇り", viewModel.ConditionsText);
             Assert.AreEqual("12.30 ℃", viewModel.TemperatureText);
 
-            viewModel.AreaIdText = "2";
+            viewModel.SelectedAreaId = 2;
             viewModel.Search();
-            Assert.AreEqual("2", viewModel.AreaIdText);
+            Assert.AreEqual(2, viewModel.SelectedAreaId);
             Assert.AreEqual("2018/01/02 16:34:56", viewModel.DataDateText);
             Assert.AreEqual("晴れ", viewModel.ConditionsText);
             Assert.AreEqual("22.45 ℃", viewModel.TemperatureText);
