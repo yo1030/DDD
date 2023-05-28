@@ -33,6 +33,7 @@ namespace DDDTest.Tests
             var areas = new List<AreaEntity>();
             areas.Add(new AreaEntity(1, "東京"));
             areas.Add(new AreaEntity(2, "神戸"));
+            areas.Add(new AreaEntity(3, "沖縄"));
             var areasMock = new Mock<IAreasRepository>();
             areasMock.Setup(x => x.GetData()).Returns(areas);
 
@@ -43,15 +44,14 @@ namespace DDDTest.Tests
             Assert.AreEqual("", viewModel.DataDateText);
             Assert.AreEqual("", viewModel.ConditionsText);
             Assert.AreEqual("", viewModel.TemperatureText);
-            Assert.AreEqual(2, viewModel.Areas.Count);
+            Assert.AreEqual(3, viewModel.Areas.Count);
             Assert.AreEqual(1, viewModel.Areas[0].AreaId);
             Assert.AreEqual("東京", viewModel.Areas[0].AreaName);
-            Assert.AreEqual(2, viewModel.Areas[0].AreaId);
-            Assert.AreEqual("神戸", viewModel.Areas[0].AreaName);
+            Assert.AreEqual(2, viewModel.Areas[1].AreaId);
+            Assert.AreEqual("神戸", viewModel.Areas[1].AreaName);
 
             viewModel.SelectedAreaId = 1;
             viewModel.Search();
-
             Assert.AreEqual(1, viewModel.SelectedAreaId);
             Assert.AreEqual("2018/01/01 12:34:56", viewModel.DataDateText);
             Assert.AreEqual("曇り", viewModel.ConditionsText);
@@ -63,6 +63,13 @@ namespace DDDTest.Tests
             Assert.AreEqual("2018/01/02 16:34:56", viewModel.DataDateText);
             Assert.AreEqual("晴れ", viewModel.ConditionsText);
             Assert.AreEqual("22.45 ℃", viewModel.TemperatureText);
+
+            viewModel.SelectedAreaId = 3;
+            viewModel.Search();
+            Assert.AreEqual(3, viewModel.SelectedAreaId);
+            Assert.AreEqual("", viewModel.DataDateText);
+            Assert.AreEqual("", viewModel.ConditionsText);
+            Assert.AreEqual("", viewModel.TemperatureText);
         }
     }
 }
