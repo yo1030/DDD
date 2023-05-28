@@ -15,25 +15,21 @@ SELECT AreaId,
        AreaName
 FROM Areas;";
 
-            var result = new List<AreaEntity>();
-            using (MySqlConnection connection = new MySqlConnection(MySQLHealper.connectionString))
-            {
-                connection.Open();	// 接続
-                Console.WriteLine("MySQLに接続しました！");
-
-                using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+            //return MySQLHealper.Query<AreaEntity>(sql, CreateEntity);
+            //return MySQLHealper.Query(sql, CreateEntity);
+            return MySQLHealper.Query(sql,
+                reader =>
                 {
-                    while (reader.Read())
-                    {
-                        result.Add(
-                            new AreaEntity(
-                                Convert.ToInt32(reader["AreaId"]),
-                                Convert.ToString(reader["AreaName"])));
-                    }
-                }
-            }
-            return result.AsReadOnly();
+                    return new AreaEntity(
+                        Convert.ToInt32(reader["AreaId"]),
+                        Convert.ToString(reader["AreaName"]));
+                });
+        }
+
+        private AreaEntity CreateEntity(MySqlDataReader reader)
+        {
+            return new AreaEntity(Convert.ToInt32(reader["AreaId"]),
+                                  Convert.ToString(reader["AreaName"]));
         }
     }
 }
