@@ -11,7 +11,7 @@ namespace DDDWinForm.ViewModels
             _entity = entity;
         }
 
-        public string AreaId => _entity.AreaId.ToString();
+        public string AreaId => _entity.AreaId.DisplayValue;
         public string AreaName => _entity.AreaName;
         public string DataDate => _entity.DataDate.ToString();
         public string Condition => _entity.Conditions.displayValue;
