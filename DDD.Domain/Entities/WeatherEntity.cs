@@ -16,14 +16,25 @@ namespace DDD.Domain.Entities
             DateTime dateTime,
             int condition,
             float temperature)
+            : this(areaId, string.Empty, dateTime, condition, temperature)
+        {
+        }
+        public WeatherEntity(
+            int areaId,
+            string areaName,
+            DateTime dateTime,
+            int condition,
+            float temperature)
         {
             AreaId = areaId;
-            DataDate= dateTime;
-            Conditions= new Conditions(condition);
-            Temperature= new Temperature(temperature);
+            AreaName = areaName;
+            DataDate = dateTime;
+            Conditions = new Conditions(condition);
+            Temperature = new Temperature(temperature);
         }
 
         public int AreaId { get; }
+        public string AreaName { get; }
         public DateTime DataDate { get; }
         public Conditions Conditions { get; }
         public Temperature Temperature { get; }
