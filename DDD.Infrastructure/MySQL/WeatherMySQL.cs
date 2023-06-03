@@ -33,26 +33,10 @@ LIMIT 1;";
                             Convert.ToSingle(reader["Temperature"]));
                 },
                 null);
-            using (MySqlConnection connection = new MySqlConnection(MySQLHealper.connectionString))
-            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
-            {
-                connection.Open();  // 接続
-                Console.WriteLine("MySQLに接続しました！");
-                cmd.Parameters.Add(new MySqlParameter("areaId", areaId));
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        return new WeatherEntity(
-                            areaId,
-                            Convert.ToDateTime(reader["DataDate"]),
-                            Convert.ToInt32(reader["Conditions"]),
-                            Convert.ToSingle(reader["Temperature"])
-                        );
-                    }
-                }
-            }
-            return null;
+        }
+        public IReadOnlyList<WeatherEntity> GetData()
+        {
+            throw new NotImplementedException();
         }
     }
 }
