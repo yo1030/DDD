@@ -95,9 +95,11 @@
             // 
             // DateTimeTextBox
             // 
+            this.DateTimeTextBox.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.DateTimeTextBox.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateTimeTextBox.Location = new System.Drawing.Point(92, 131);
             this.DateTimeTextBox.Name = "DateTimeTextBox";
-            this.DateTimeTextBox.Size = new System.Drawing.Size(129, 19);
+            this.DateTimeTextBox.Size = new System.Drawing.Size(149, 19);
             this.DateTimeTextBox.TabIndex = 6;
             // 
             // ConditionComboBox
