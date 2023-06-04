@@ -1,5 +1,6 @@
 ﻿using DDD.Domain.Entities;
 using DDDWinForm.ViewModels;
+using DDDWinForm.Views;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -33,6 +34,14 @@ namespace DDDWinForm
         private void LatestBtn_Click(object sender, EventArgs e)
         {
             _viewModel.Search();
+        }
+
+        private void List_Click(object sender, EventArgs e)
+        {
+            using(Form f = new WeatherListView())
+            {
+                f.ShowDialog();
+            }
         }
     }
 }

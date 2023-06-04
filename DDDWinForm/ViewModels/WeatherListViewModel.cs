@@ -1,4 +1,5 @@
 ﻿using DDD.Domain.Repositories;
+using DDD.Infrastructure.MySQL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,10 @@ namespace DDDWinForm.ViewModels
     {
         private IWeatherRepository _weather;
 
+        public WeatherListViewModel()
+            : this(new WeatherMySQL())
+        {
+        }
         public WeatherListViewModel(IWeatherRepository weather)
         {
             _weather = weather;

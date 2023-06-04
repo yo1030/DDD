@@ -1,5 +1,6 @@
 ﻿using DDD.Domain.Entities;
 using DDD.Domain.Repositories;
+using DDD.Domain.ValueObjects;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,27 @@ LIMIT 1;";
         }
         public IReadOnlyList<WeatherEntity> GetData()
         {
-            throw new NotImplementedException();
+            string sql = @"
+select
+    A.AreaId,
+    IFNULL(B.AreaName, AreaName) as AreaName,
+    A.DataDate,
+    A.Conditions,
+    A.Temperature
+from Weather A
+left outer join Areas B
+on A.AreaId = B.AreaId;
+";
+            return MySQLHealper.Query(sql,
+                reader =>
+                {
+                    return new WeatherEntity(
+                            Convert.ToInt32(reader["AreaId"]),
+                            Convert.ToString(reader["AreaName"]),
+                            Convert.ToDateTime(reader["DataDate"]),
+                            Convert.ToInt32(reader["Conditions"]),
+                            Convert.ToSingle(reader["Temperature"]));
+                });
         }
     }
 }

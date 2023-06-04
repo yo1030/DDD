@@ -37,12 +37,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.LatestBtn = new System.Windows.Forms.Button();
             this.AreasComboBox = new System.Windows.Forms.ComboBox();
+            this.List = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 54);
+            this.label1.Location = new System.Drawing.Point(46, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 0;
@@ -51,7 +52,7 @@
             // TemperatureLabel
             // 
             this.TemperatureLabel.AutoSize = true;
-            this.TemperatureLabel.Location = new System.Drawing.Point(143, 219);
+            this.TemperatureLabel.Location = new System.Drawing.Point(143, 258);
             this.TemperatureLabel.Name = "TemperatureLabel";
             this.TemperatureLabel.Size = new System.Drawing.Size(35, 12);
             this.TemperatureLabel.TabIndex = 1;
@@ -60,7 +61,7 @@
             // ConditionLabel
             // 
             this.ConditionLabel.AutoSize = true;
-            this.ConditionLabel.Location = new System.Drawing.Point(143, 154);
+            this.ConditionLabel.Location = new System.Drawing.Point(143, 193);
             this.ConditionLabel.Name = "ConditionLabel";
             this.ConditionLabel.Size = new System.Drawing.Size(35, 12);
             this.ConditionLabel.TabIndex = 2;
@@ -69,7 +70,7 @@
             // DataDateLabel
             // 
             this.DataDateLabel.AutoSize = true;
-            this.DataDateLabel.Location = new System.Drawing.Point(143, 102);
+            this.DataDateLabel.Location = new System.Drawing.Point(143, 141);
             this.DataDateLabel.Name = "DataDateLabel";
             this.DataDateLabel.Size = new System.Drawing.Size(35, 12);
             this.DataDateLabel.TabIndex = 3;
@@ -78,7 +79,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(46, 219);
+            this.label5.Location = new System.Drawing.Point(46, 258);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 4;
@@ -87,7 +88,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 154);
+            this.label6.Location = new System.Drawing.Point(46, 193);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 5;
@@ -96,7 +97,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 102);
+            this.label7.Location = new System.Drawing.Point(46, 141);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 6;
@@ -104,7 +105,7 @@
             // 
             // LatestBtn
             // 
-            this.LatestBtn.Location = new System.Drawing.Point(293, 43);
+            this.LatestBtn.Location = new System.Drawing.Point(293, 82);
             this.LatestBtn.Name = "LatestBtn";
             this.LatestBtn.Size = new System.Drawing.Size(75, 23);
             this.LatestBtn.TabIndex = 8;
@@ -115,16 +116,27 @@
             // AreasComboBox
             // 
             this.AreasComboBox.FormattingEnabled = true;
-            this.AreasComboBox.Location = new System.Drawing.Point(136, 46);
+            this.AreasComboBox.Location = new System.Drawing.Point(136, 85);
             this.AreasComboBox.Name = "AreasComboBox";
             this.AreasComboBox.Size = new System.Drawing.Size(121, 20);
             this.AreasComboBox.TabIndex = 9;
+            // 
+            // List
+            // 
+            this.List.Location = new System.Drawing.Point(32, 30);
+            this.List.Name = "List";
+            this.List.Size = new System.Drawing.Size(75, 23);
+            this.List.TabIndex = 10;
+            this.List.Text = "List";
+            this.List.UseVisualStyleBackColor = true;
+            this.List.Click += new System.EventHandler(this.List_Click);
             // 
             // WeatherLatestView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(501, 439);
+            this.Controls.Add(this.List);
             this.Controls.Add(this.AreasComboBox);
             this.Controls.Add(this.LatestBtn);
             this.Controls.Add(this.label7);
@@ -152,6 +164,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button LatestBtn;
         private System.Windows.Forms.ComboBox AreasComboBox;
+        private System.Windows.Forms.Button List;
     }
 }
 
