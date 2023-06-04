@@ -62,7 +62,28 @@ on A.AreaId = B.AreaId;
 
         public void Save(WeatherEntity weather)
         {
-            throw new NotImplementedException();
+            string insert = @"
+insert into Weather
+(AreaId, DataDate, Conditions, Temperature)
+values
+(@AreaId, @DataDate, @Conditions, @Temperature);
+";
+            string update = @"
+update Weather
+set Conditions = @Conditions,
+	Temperature = @Temperature
+where AreaId = @AreaId
+and DataDate = @DataDate;
+";
+            var args = new List<MySqlParameter>
+            {
+                new MySqlParameter("@AreaId", weather.AreaId.Value),
+                new MySqlParameter("@DataDate", weather.DataDate),
+                new MySqlParameter("@Conditions", weather.Conditions.Value),
+                new MySqlParameter("@Temperature", weather.Temperature.Value),
+            };
+
+            MySQLHealper.Execute(insert, update, args.ToArray());
         }
     }
 }

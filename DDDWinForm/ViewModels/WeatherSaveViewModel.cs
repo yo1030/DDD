@@ -3,6 +3,7 @@ using DDD.Domain.Exceptions;
 using DDD.Domain.Helpers;
 using DDD.Domain.Repositories;
 using DDD.Domain.ValueObjects;
+using DDD.Infrastructure.MySQL;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -14,6 +15,10 @@ namespace DDDWinForm.ViewModels
         private IWeatherRepository _weather;
         private IAreasRepository _areas;
 
+        public WeatherSaveViewModel()
+            :this(new WeatherMySQL(), new AreasMySQL())
+        {
+        }
         public WeatherSaveViewModel(
             IWeatherRepository weather,
             IAreasRepository areas)
@@ -39,6 +44,7 @@ namespace DDDWinForm.ViewModels
         = new BindingList<AreaEntity>();
         public BindingList<Conditions> Conditions_ { get; set; }
         = new BindingList<Conditions>(Conditions.ToList());
+        public string TemperatureUnitName => Temperature.UnitName;
 
         public void Save()
         {

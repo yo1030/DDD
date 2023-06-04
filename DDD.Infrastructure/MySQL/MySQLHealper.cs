@@ -58,7 +58,7 @@ namespace DDD.Infrastructure.MySQL
             return QuerySingle<T>(sql, null, createEntity, nullEntity);
         }
 
-            internal static T QuerySingle<T>(
+        internal static T QuerySingle<T>(
             string sql,
             MySqlParameter[] parameters,
             Func<MySqlDataReader, T> createEntity,
@@ -80,6 +80,44 @@ namespace DDD.Infrastructure.MySQL
                     }
                 }
                 return nullEntity;
+            }
+        }
+        internal static void Execute(
+            string sql,
+            MySqlParameter[] parameters)
+        {
+            using (MySqlConnection connection = new MySqlConnection(MySQLHealper.connectionString))
+            using (MySqlCommand cmd = new MySqlCommand(sql, connection))
+            {
+                connection.Open();
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        internal static void Execute(
+            string insert,
+            string update,
+            MySqlParameter[] parameters)
+        {
+            using (MySqlConnection connection = new MySqlConnection(MySQLHealper.connectionString))
+            using (MySqlCommand cmd = new MySqlCommand(update, connection))
+            {
+                connection.Open();
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+                
+                if (cmd.ExecuteNonQuery() < 1)
+                {
+                    cmd.CommandText = insert;
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }
