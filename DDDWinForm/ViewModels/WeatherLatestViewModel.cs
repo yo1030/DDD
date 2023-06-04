@@ -30,7 +30,6 @@ namespace DDDWinForm.ViewModels
 
             foreach(var area in _areas.GetData())
             {
-                Console.WriteLine(area);
                 Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
             }
         }

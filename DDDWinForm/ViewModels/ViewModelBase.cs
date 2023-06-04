@@ -22,5 +22,9 @@ namespace DDDWinForm.ViewModels
             }
             return true;
         }
+        public virtual DateTime GetDateTime()
+        {
+            return DateTime.Now;
+        }
     }
 }

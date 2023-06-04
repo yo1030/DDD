@@ -52,5 +52,16 @@ namespace DDD.Domain.ValueObjects
         {
             return Value == other.Value;
         }
+
+        public static IList<Conditions> ToList()
+        {
+            return new List<Conditions>
+            {
+                None,
+                Sunny,
+                Cloudy,
+                Rain,
+            };
+        }
     }
 }

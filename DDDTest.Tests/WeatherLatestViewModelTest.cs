@@ -30,11 +30,12 @@ namespace DDDTest.Tests
                     1,
                     22.45f));
 
+            var areasMock = new Mock<IAreasRepository>();
+
             var areas = new List<AreaEntity>();
             areas.Add(new AreaEntity(1, "東京"));
             areas.Add(new AreaEntity(2, "神戸"));
             areas.Add(new AreaEntity(3, "沖縄"));
-            var areasMock = new Mock<IAreasRepository>();
             areasMock.Setup(x => x.GetData()).Returns(areas);
 
             WeatherLatestViewModel viewModel = new WeatherLatestViewModel(

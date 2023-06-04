@@ -59,5 +59,10 @@ on A.AreaId = B.AreaId;
                             Convert.ToSingle(reader["Temperature"]));
                 });
         }
+
+        public void Save(WeatherEntity weather)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
