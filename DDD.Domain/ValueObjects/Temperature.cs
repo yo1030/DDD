@@ -40,5 +40,10 @@ namespace DDD.Domain.ValueObjects
         {
             return Value == other.Value;
         }
+
+        protected override int GetHashCodeCore()
+        {
+            return Value.GetHashCode();
+        }
     }
 }

@@ -22,10 +22,11 @@
             return !Equals(x, y);
         }
         protected abstract bool EqualsCore(T other);
+        protected abstract int GetHashCodeCore();
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return GetHashCodeCore();
         }
     }
 }

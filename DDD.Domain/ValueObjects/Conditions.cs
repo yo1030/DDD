@@ -63,5 +63,10 @@ namespace DDD.Domain.ValueObjects
                 Rain,
             };
         }
+
+        protected override int GetHashCodeCore()
+        {
+            return Value.GetHashCode();
+        }
     }
 }
