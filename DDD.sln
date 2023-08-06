@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.Domain", "DDD.Domain\DD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDTest.Tests", "DDDTest.Tests\DDDTest.Tests.csproj", "{9BB60C1C-0921-4008-8277-FA091F549FA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDD.WPF", "DDD.WPF\DDD.WPF.csproj", "{29BE47C5-0374-4622-859D-9ED64E608080}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{9BB60C1C-0921-4008-8277-FA091F549FA9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BB60C1C-0921-4008-8277-FA091F549FA9}.Release|x64.ActiveCfg = Release|Any CPU
 		{9BB60C1C-0921-4008-8277-FA091F549FA9}.Release|x64.Build.0 = Release|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Debug|x64.Build.0 = Debug|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Release|x64.ActiveCfg = Release|Any CPU
+		{29BE47C5-0374-4622-859D-9ED64E608080}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
