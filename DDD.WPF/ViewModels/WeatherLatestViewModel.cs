@@ -1,21 +1,21 @@
 ﻿using DDD.Domain.Entities;
+using DDD.Domain.Exceptions;
 using DDD.Domain.Repositories;
-using DDD.Domain.ValueObjects;
 using DDD.Infrastructure.MySQL;
+using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DDDWinForm.ViewModels
+namespace DDD.WPF.ViewModels
 {
     public class WeatherLatestViewModel : ViewModelBase
     {
         private IWeatherRepository _weather;
-        private IAreasRepository _areas;
+        private IAreasRepository _areasRepository;
         public WeatherLatestViewModel() : this(
             new WeatherMySQL(), new AreasMySQL())
         {
@@ -23,24 +23,36 @@ namespace DDDWinForm.ViewModels
         }
         public WeatherLatestViewModel(
             IWeatherRepository weather,
-            IAreasRepository areas)
+            IAreasRepository areasRepository)
         {
             _weather = weather;
-            _areas = areas;
+            _areasRepository = areasRepository;
 
-            foreach(var area in _areas.GetData())
+            foreach (var area in _areasRepository.GetData())
             {
                 Areas.Add(new AreaEntity(area.AreaId, area.AreaName));
             }
+
+            LatestButton = new DelegateCommand(LatestButtonExecute);
         }
 
-        private object _selectedAreaId;
-        public object SelectedAreaId
+        private AreaEntity _selectedArea;
+        public AreaEntity SelectedArea
         {
-            get { return _selectedAreaId; }
+            get { return _selectedArea; }
             set
             {
-                SetProperty(ref _selectedAreaId, value);
+                SetProperty(ref _selectedArea, value);
+            }
+        }
+
+        private ObservableCollection<AreaEntity> _areas = new ObservableCollection<AreaEntity>();
+        public ObservableCollection<AreaEntity> Areas
+        {
+            get { return _areas; }
+            set
+            {
+                SetProperty(ref _areas, value);
             }
         }
 
@@ -74,12 +86,16 @@ namespace DDDWinForm.ViewModels
             }
         }
 
-        public BindingList<AreaEntity> Areas { get; set; }
-        = new BindingList<AreaEntity>();
+        public DelegateCommand LatestButton { get; }
 
-        public void Search()
+
+        private void LatestButtonExecute()
         {
-            WeatherEntity entity = _weather.GetLatest(Convert.ToInt32(_selectedAreaId));
+            if (SelectedArea == null)
+            {
+                throw new InputException("地域を選択してください");
+            }
+            WeatherEntity entity = _weather.GetLatest(SelectedArea.AreaId);
             if (entity == null)
             {
                 DataDateText = String.Empty;

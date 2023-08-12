@@ -27,7 +27,7 @@ namespace DDDWinForm.ViewModels
             _areas = areas;
 
             DataDateValue = GetDateTime();
-            SelectedCondition = Conditions.Sunny.Value;
+            SelectedCondition = Condition.Sunny.Value;
             TemperatureText = string.Empty;
 
             foreach (var area in _areas.GetData())
@@ -42,8 +42,8 @@ namespace DDDWinForm.ViewModels
         public string TemperatureText { get; set; }
         public BindingList<AreaEntity> Areas { get; set; }
         = new BindingList<AreaEntity>();
-        public BindingList<Conditions> Conditions_ { get; set; }
-        = new BindingList<Conditions>(Conditions.ToList());
+        public BindingList<Condition> Conditions_ { get; set; }
+        = new BindingList<Condition>(Condition.ToList());
         public string TemperatureUnitName => Temperature.UnitName;
 
         public void Save()

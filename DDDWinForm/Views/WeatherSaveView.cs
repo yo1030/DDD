@@ -31,8 +31,8 @@ namespace DDDWinForm.Views
                 "SelectedValue", _viewModel, nameof(_viewModel.SelectedCondition));
             this.ConditionComboBox.DataBindings.Add(
                 "DataSource", _viewModel, nameof(_viewModel.Conditions_));
-            this.ConditionComboBox.ValueMember = nameof(Conditions.Value);
-            this.ConditionComboBox.DisplayMember = nameof(Conditions.displayValue);
+            this.ConditionComboBox.ValueMember = nameof(Condition.Value);
+            this.ConditionComboBox.DisplayMember = nameof(Condition.DisplayValue);
 
             TemperatureTextBox.DataBindings.Add(
                 "Text", _viewModel, nameof(_viewModel.TemperatureText));

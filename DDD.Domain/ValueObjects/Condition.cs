@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.ValueObjects
 {
-    public sealed class Conditions : ValueObject<Conditions>
+    public sealed class Condition : ValueObject<Condition>
     {
         /// <summary>
         /// 不明
         /// </summary>
-        public static readonly Conditions None = new Conditions(0);
+        public static readonly Condition None = new Condition(0);
         /// <summary>
         /// 晴れ
         /// </summary>
-        public static readonly Conditions Sunny = new Conditions(1);
+        public static readonly Condition Sunny = new Condition(1);
         /// <summary>
         /// 曇り
         /// </summary>
-        public static readonly Conditions Cloudy = new Conditions(2);
+        public static readonly Condition Cloudy = new Condition(2);
         /// <summary>
         /// 雨
         /// </summary>
-        public static readonly Conditions Rain = new Conditions(3);
-        public Conditions(int value)
+        public static readonly Condition Rain = new Condition(3);
+        public Condition(int value)
         {
             Value = value;
         }
         public int Value { get; }
-        public string displayValue
+        public string DisplayValue
         {
             get
             {
@@ -48,14 +48,14 @@ namespace DDD.Domain.ValueObjects
                 return "不明";
             }
         }
-        protected override bool EqualsCore(Conditions other)
+        protected override bool EqualsCore(Condition other)
         {
             return Value == other.Value;
         }
 
-        public static IList<Conditions> ToList()
+        public static IList<Condition> ToList()
         {
-            return new List<Conditions>
+            return new List<Condition>
             {
                 None,
                 Sunny,

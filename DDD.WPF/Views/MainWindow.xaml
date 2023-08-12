@@ -3,12 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="500" Width="700" >
+        Title="{Binding Title}" Height="500" Width="700"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Button Content="直近値"
-                        Width="100"></Button>
+                        Width="100"
+                        Command="{Binding WeatherLatestButton}"></Button>
+                <Button Content="List"
+                        Width="100"
+                        Command="{Binding WeatherListButton}"></Button>
+                <Button Content="Save"
+                        Width="100"
+                        Command="{Binding WeatherSaveButton}"></Button>
             </StackPanel>
             <ContentControl prism:RegionManager.RegionName="ContentRegion" />
         </StackPanel>

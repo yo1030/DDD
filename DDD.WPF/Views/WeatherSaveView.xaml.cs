@@ -3,11 +3,11 @@
 namespace DDD.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for LatestView
+    /// Interaction logic for WeatherSaveView
     /// </summary>
-    public partial class LatestView : UserControl
+    public partial class WeatherSaveView : UserControl
     {
-        public LatestView()
+        public WeatherSaveView()
         {
             InitializeComponent();
         }

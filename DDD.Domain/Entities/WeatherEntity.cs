@@ -29,19 +29,19 @@ namespace DDD.Domain.Entities
             AreaId = new AreaId(areaId);
             AreaName = areaName;
             DataDate = dateTime;
-            Conditions = new Conditions(condition);
+            Conditions = new Condition(condition);
             Temperature = new Temperature(temperature);
         }
 
         public AreaId AreaId { get; }
         public string AreaName { get; }
         public DateTime DataDate { get; }
-        public Conditions Conditions { get; }
+        public Condition Conditions { get; }
         public Temperature Temperature { get; }
 
         public bool IsHeatWeave()
         {
-            if(Conditions == Conditions.Sunny)
+            if(Conditions == Condition.Sunny)
             {
                 if (Temperature.Value > 30)
                 {

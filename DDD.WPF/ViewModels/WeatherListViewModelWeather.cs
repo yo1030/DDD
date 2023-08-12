@@ -1,7 +1,7 @@
 ﻿using DDD.Domain.Entities;
 using System;
 
-namespace DDDWinForm.ViewModels
+namespace WPF.ViewModels
 {
     public sealed class WeatherListViewModelWeather
     {
